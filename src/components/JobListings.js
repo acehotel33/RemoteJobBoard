@@ -9,7 +9,6 @@ const jobs = [
     company: "Tech Co.",
     descriptors: ["Fully Remote", "Full-time"],
     logo: "path_to_logo.png", // Placeholder for company logo path
-    location: "New York, NY",
     salaryRange: "$70k - $90k",
   },
   { 
@@ -18,8 +17,55 @@ const jobs = [
     company: "Tatia & Co.",
     descriptors: ["Flexible Hours", "Great Benefits"],
     logo: "path_to_logo.png", // Placeholder for company logo path
-    location: "Tbilisi, Georgia",
     salaryRange: "$120k - $150k",
+  },
+  { 
+    id: 3,
+    title: "Customer Service Specialist",
+    company: "Benedict Factories.",
+    descriptors: ["Part-time", "Fully Remote"],
+    logo: "path_to_logo.png", // Placeholder for company logo path
+    salaryRange: "$50k - $60k",
+  },
+  { 
+    id: 3,
+    title: "Customer Service Specialist",
+    company: "Benedict Factories.",
+    descriptors: ["Part-time", "Fully Remote"],
+    logo: "path_to_logo.png", // Placeholder for company logo path
+    salaryRange: "$50k - $60k",
+  },
+  { 
+    id: 3,
+    title: "Customer Service Specialist",
+    company: "Benedict Factories.",
+    descriptors: ["Part-time", "Fully Remote"],
+    logo: "path_to_logo.png", // Placeholder for company logo path
+    salaryRange: "$50k - $60k",
+  },
+  { 
+    id: 3,
+    title: "Customer Service Specialist",
+    company: "Benedict Factories.",
+    descriptors: ["Part-time", "Fully Remote"],
+    logo: "path_to_logo.png", // Placeholder for company logo path
+    salaryRange: "$50k - $60k",
+  },
+  { 
+    id: 3,
+    title: "Customer Service Specialist",
+    company: "Benedict Factories.",
+    descriptors: ["Part-time", "Fully Remote"],
+    logo: "path_to_logo.png", // Placeholder for company logo path
+    salaryRange: "$50k - $60k",
+  },
+  { 
+    id: 3,
+    title: "Customer Service Specialist",
+    company: "Benedict Factories.",
+    descriptors: ["Part-time", "Fully Remote"],
+    logo: "path_to_logo.png", // Placeholder for company logo path
+    salaryRange: "$50k - $60k",
   },
   // ...add more sample jobs
 ];
@@ -33,7 +79,7 @@ const JobListings = () => {
             <img src={job.logo} alt={`${job.company} logo`} className="h-12 w-12 rounded-full" />
             <div className="flex-1">
               <h3 className="text-xl font-bold">{job.title}</h3>
-              <p className="text-gray-800">{job.company} - {job.location}</p>
+              <p className="text-gray-800">{job.company}</p>
               <p className="text-gray-500">{job.salaryRange}</p>
             </div>
           </div>

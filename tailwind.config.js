@@ -4,7 +4,16 @@ module.exports = {
   "./public/index.html",
 ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        burgundy: {
+          DEFAULT: '#9d2d41', // Replace with your exact burgundy color
+          // You can also add lighter or darker shades if you need them:
+          // light: '#9d2d41',
+          // dark: '#5c0015'
+        },
+      },
+    },
   },
   plugins: [],
 }
