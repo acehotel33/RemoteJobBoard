@@ -1,95 +1,60 @@
-// src/components/JobListings.js
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
-const jobs = [
-  // Sample data structure
-  { 
-    id: 1,
-    title: "Frontend Developer",
-    company: "Tech Co.",
-    descriptors: ["Fully Remote", "Full-time"],
-    logo: "path_to_logo.png", // Placeholder for company logo path
-    salaryRange: "$70k - $90k",
-  },
-  { 
-    id: 2,
-    title: "Account Manager",
-    company: "Tatia & Co.",
-    descriptors: ["Flexible Hours", "Great Benefits"],
-    logo: "path_to_logo.png", // Placeholder for company logo path
-    salaryRange: "$120k - $150k",
-  },
-  { 
-    id: 3,
-    title: "Customer Service Specialist",
-    company: "Benedict Factories.",
-    descriptors: ["Part-time", "Fully Remote"],
-    logo: "path_to_logo.png", // Placeholder for company logo path
-    salaryRange: "$50k - $60k",
-  },
-  { 
-    id: 3,
-    title: "Customer Service Specialist",
-    company: "Benedict Factories.",
-    descriptors: ["Part-time", "Fully Remote"],
-    logo: "path_to_logo.png", // Placeholder for company logo path
-    salaryRange: "$50k - $60k",
-  },
-  { 
-    id: 3,
-    title: "Customer Service Specialist",
-    company: "Benedict Factories.",
-    descriptors: ["Part-time", "Fully Remote"],
-    logo: "path_to_logo.png", // Placeholder for company logo path
-    salaryRange: "$50k - $60k",
-  },
-  { 
-    id: 3,
-    title: "Customer Service Specialist",
-    company: "Benedict Factories.",
-    descriptors: ["Part-time", "Fully Remote"],
-    logo: "path_to_logo.png", // Placeholder for company logo path
-    salaryRange: "$50k - $60k",
-  },
-  { 
-    id: 3,
-    title: "Customer Service Specialist",
-    company: "Benedict Factories.",
-    descriptors: ["Part-time", "Fully Remote"],
-    logo: "path_to_logo.png", // Placeholder for company logo path
-    salaryRange: "$50k - $60k",
-  },
-  { 
-    id: 3,
-    title: "Customer Service Specialist",
-    company: "Benedict Factories.",
-    descriptors: ["Part-time", "Fully Remote"],
-    logo: "path_to_logo.png", // Placeholder for company logo path
-    salaryRange: "$50k - $60k",
-  },
-  // ...add more sample jobs
-];
+// Function to calculate "x time ago"
+const timeSince = (date) => {
+    const seconds = Math.floor((new Date() - new Date(date)) / 1000);
+  
+    let interval = Math.floor(seconds / 31536000); // Year
+    if (interval > 1) return interval + " years ago";
+    if (interval === 1) return interval + " year ago";
+  
+    interval = Math.floor(seconds / 2592000); // Month
+    if (interval > 1) return interval + " months ago";
+    if (interval === 1) return interval + " month ago";
+  
+    interval = Math.floor(seconds / 86400); // Day
+    if (interval > 1) return interval + " days ago";
+    if (interval === 1) return interval + " day ago";
+  
+    interval = Math.floor(seconds / 3600); // Hour
+    if (interval > 1) return interval + " hours ago";
+    if (interval === 1) return interval + " hour ago";
+  
+    interval = Math.floor(seconds / 60); // Minute
+    if (interval > 1) return interval + " minutes ago";
+    if (interval === 1) return interval + " minute ago";
+  
+    return Math.floor(seconds) + " seconds ago"; // Second, assuming it's always plural
+  };
+  
 
-const JobListings = () => {
+const JobListings = ({ onJobSelect }) => {
+  const [jobs, setJobs] = useState([]);
+
+  useEffect(() => {
+    const fetchJobPostings = async () => {
+      try {
+        const response = await fetch('http://localhost:3001/api/jobs');
+        const data = await response.json();
+        setJobs(data);
+      } catch (error) {
+        console.error("Error fetching job postings:", error);
+      }
+    };
+
+    fetchJobPostings();
+  }, []);
+
   return (
     <div className="my-8 space-y-6">
       {jobs.map((job) => (
-        <div key={job.id} className="bg-white shadow-lg rounded-lg p-6 border border-gray-200">
-          <div className="flex items-center space-x-4">
-            <img src={job.logo} alt={`${job.company} logo`} className="h-12 w-12 rounded-full" />
-            <div className="flex-1">
-              <h3 className="text-xl font-bold">{job.title}</h3>
-              <p className="text-gray-800">{job.company}</p>
-              <p className="text-gray-500">{job.salaryRange}</p>
-            </div>
-          </div>
-          <div className="flex mt-4 flex-wrap gap-2">
-            {job.descriptors.map((desc, index) => (
-              <span key={index} className="px-3 py-1 border rounded-full text-sm bg-blue-100 text-blue-800">
-                {desc}
-              </span>
-            ))}
-          </div>
+        <div key={job._id} className="bg-white shadow-lg rounded-lg p-6 border border-gray-200 cursor-pointer"
+          onClick={() => onJobSelect(job)}>
+          <h3 className="text-xl font-bold">{job.role}</h3>
+          <p>{job.company}</p>
+          <p>Salary Range: ${job.salaryRange.min.toLocaleString()} - ${job.salaryRange.max.toLocaleString()}</p>
+          <p>{timeSince(job.datePosted)}</p>
+          {/* Mapping descriptors if needed */}
         </div>
       ))}
     </div>

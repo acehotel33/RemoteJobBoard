@@ -1,18 +1,28 @@
-// src/components/HomePage.js
-import React from 'react';
-import Navbar from './Navbar'; // Component for the navigation bar
-import HeroSection from './HeroSection'; // Component for the hero section with the search bar
-import TagsFilters from './TagsFilters'; // Component for the tag category bubbles
-import JobListings from './JobListings'; // Component for the job listings
-import Footer from './Footer'; // Component for the footer
+import React, { useState } from 'react';
+// Import components
+import Navbar from './Navbar';
+import HeroSection from './HeroSection';
+import TagsFilters from './TagsFilters';
+import JobListings from './JobListings';
+import JobPage from './JobPage'; // Import JobPage
+import Footer from './Footer';
 
 const HomePage = () => {
+  // State to manage the selected job
+  const [selectedJob, setSelectedJob] = useState(null);
+
+  // Handler to update the selected job
+  const handleJobSelect = (job) => {
+    setSelectedJob(job);
+  };
+
   return (
     <div>
       <Navbar />
       <HeroSection />
       <TagsFilters />
-      <JobListings />
+      <JobListings onJobSelect={handleJobSelect} />
+      {selectedJob && <JobPage job={selectedJob} onClose={() => setSelectedJob(null)} />}
       <Footer />
     </div>
   );
