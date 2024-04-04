@@ -13,11 +13,15 @@ module.exports = {
 
       fontFamily: {
         sans: ['Inter', 'sans-serif'],
-        pacifico: ['Pacifico', 'cursive']
+        pacifico: ['Pacifico', 'cursive'],
+        satisfy: ['Satisfy', 'cursive'],
+        kaushan: ['Kaushan', 'cursive'],
+        cookie: ['Cookie', 'cursive'],
       },
       colors: {
         burgundy: '#800020',
-        alabaster: '#F8F8F8'
+        alabaster: '#F8F8F8',
+        lightburg: '#7d4351',
       },
     },
   },

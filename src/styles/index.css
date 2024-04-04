@@ -3,6 +3,9 @@
 @tailwind utilities;
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Satisfy&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cookie&family=Kaushan+Script&family=Satisfy&display=swap');
 
 
 body {
@@ -24,8 +27,12 @@ code {
 }
 
 .hero-slogan {
-  font-family: 'Pacifico', cursive; /* This is a fancy font, you can choose any you like */
-  color: #800020; /* Dark grey-blue, softer than black */
+  /* font-family: 'Pacifico', cursive; This is a fancy font, you can choose any you like */
+  /* font-family: "Satisfy", cursive; */
+  /* font-family: "Kaushan", cursive */
+  /* font-family: "Cookie", cursive */
+  color: #800020;
+  color: #7d4351;
   font-size: 5rem; /* Large text */
   margin-bottom: 1rem;
 }
