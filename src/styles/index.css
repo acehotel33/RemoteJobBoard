@@ -26,7 +26,7 @@ code {
 .hero-slogan {
   font-family: 'Pacifico', cursive; /* This is a fancy font, you can choose any you like */
   color: #800020; /* Dark grey-blue, softer than black */
-  font-size: 3rem; /* Large text */
+  font-size: 5rem; /* Large text */
   margin-bottom: 1rem;
 }
 
@@ -43,5 +43,5 @@ code {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
   font-size: 1rem;
   outline: none;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
