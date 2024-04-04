@@ -1,19 +1,24 @@
 import React from 'react';
+import TagsFilters from './TagsFilters';
 
 const HeroSection = () => {
-  return (
-    <div className="bg-burgundy text-white text-center p-16">
-      <h1 className="text-4xl mb-4">Find Your Dream Job</h1>
-      {/* Replace this div with actual SearchBar component */}
-      <div className="inline-block w-full md:w-1/2">
-        <input
-          type="text"
-          className="p-2 w-full"
-          placeholder="Search for jobs or companies..."
-        />
+    return (
+      <div className="hero-section">
+        <h1 className="text-burgundy mb-10">
+        <span className="text-5xl font-pacifico">WeRemote!</span>
+          <span className="text-4xl font-inter"> and so should you!</span>
+        </h1>
+        <div className="search-bar-wrapper">
+          <input
+            type="text"
+            className="search-bar"
+            placeholder="Search for jobs or companies..."
+          />
+        </div>
+        <TagsFilters />
       </div>
-    </div>
-  );
-};
+    );
+  };
+  
 
   export default HeroSection;

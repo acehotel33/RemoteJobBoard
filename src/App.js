@@ -1,6 +1,6 @@
 // src/App.js
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, /*Link*/ } from 'react-router-dom';
 import './styles/App.css'; // Adjust the path based on your structure
 
 // Components
@@ -13,16 +13,16 @@ function App() {
     <Router>
       <div className="flex flex-col h-screen justify-between"> {/* Make sure the main div is a flex container */}
         {/* Main Navigation */}
-        <nav>
+        {/* <nav>
           <ul>
             <li>
-              <Link to="/">Home</Link> {/* Navigation Link */}
+              <Link to="/">Home</Link> Navigation Link
             </li>
             <li>
-              <Link to="/job-page">Job</Link> {/* Navigation Link */}
+              <Link to="/job-page">Job</Link> Navigation Link
             </li>
           </ul>
-        </nav>
+        </nav> */}
 
         {/* Route Configurations */}
         <Routes>

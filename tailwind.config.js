@@ -5,13 +5,19 @@ module.exports = {
 ],
   theme: {
     extend: {
+      spacing: {
+        '4': '1rem', // Used for p-4, m-4 etc.
+        '8': '2rem', // Used for p-8, m-8 etc.
+        // Define more as needed
+      },
+
+      fontFamily: {
+        sans: ['Inter', 'sans-serif'],
+        pacifico: ['Pacifico', 'cursive']
+      },
       colors: {
-        burgundy: {
-          DEFAULT: '#9d2d41', // Replace with your exact burgundy color
-          // You can also add lighter or darker shades if you need them:
-          // light: '#9d2d41',
-          // dark: '#5c0015'
-        },
+        burgundy: '#800020',
+        alabaster: '#F8F8F8'
       },
     },
   },

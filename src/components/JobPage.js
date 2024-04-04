@@ -71,7 +71,9 @@ const JobPage = ({ job, onClose }) => {
 
         {/* Apply Now Button */}
         <div className="mt-6 text-center">
-          <button className="bg-burgundy text-white rounded px-6 py-2 font-bold">Apply Now</button>
+        <button className="bg-burgundy text-white rounded-lg shadow-md px-6 py-2 transition duration-300 ease-in-out hover:bg-burgundy-light">
+          Apply Now
+        </button>
         </div>
       </div>
     </div>
