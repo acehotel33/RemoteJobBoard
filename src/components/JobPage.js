@@ -1,12 +1,13 @@
 import React, { useEffect, useRef } from 'react';
+import ReactQuill from 'react-quill';
 
 
 const JobPage = ({ job, onClose }) => {
   
   // This function safely sets inner HTML from job.description
-  const createMarkup = (htmlContent) => {
-    return { __html: htmlContent };
-  };
+  // const createMarkup = (htmlContent) => {
+  //   return { __html: htmlContent };
+  // };
 
   // Reference to the modal content
   const modalRef = useRef(null);
@@ -88,11 +89,12 @@ const JobPage = ({ job, onClose }) => {
           </div>
 
           {/* Detailed Job Description */}
-          <div className="mt-4">
-            <h2 className="text-lg font-bold">Job Description</h2>
-            {/* This div will render the HTML content from the job's description */}
-            <div dangerouslySetInnerHTML={createMarkup(job.description)} />
-          </div>
+            <div className="mt-4">
+              <h2 className="text-lg font-bold">Job Description</h2>
+              <div className="job-description-quill">
+                <ReactQuill value={job.description} readOnly={true} theme={"bubble"} />
+              </div>
+            </div>
 
           {/* Descriptors Tags */}
           <div className="mt-4">

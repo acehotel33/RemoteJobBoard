@@ -42,19 +42,19 @@ const SubmissionForm = () => {
 
   // Handler for tags will be added here
 
+  const sanitizeConfig = {
+    ALLOWED_TAGS: ['h1', 'h2', 'h3', 'ul', 'ol', 'li', 'p', 'b', 'i', 'strong', 'em', 'br'], // Add more tags as needed
+    ALLOWED_ATTR: ['href', 'align', 'alt', 'src', 'title', 'style'], // Add more attributes as needed
+  };
+  
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Sanitize the description content
-    const sanitizedDescription = DOMPurify.sanitize(formData.description);
-
-    // Create a new object with the sanitized description
-    const sanitizedFormData = {
-      ...formData,
-      description: sanitizedDescription,
-    };
-
-    console.log(sanitizedFormData); // Now logging sanitized data
-
+    // Sanitize description with custom configuration
+    const sanitizedDescription = DOMPurify.sanitize(formData.description, sanitizeConfig);
+    const sanitizedFormData = { ...formData, description: sanitizedDescription };
+  
+    console.log(sanitizedFormData);  // This is now safe to send to your backend
+  
     // TODO: Send sanitizedFormData to the backend
   };
   

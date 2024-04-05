@@ -1,6 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('react-quill/dist/quill.bubble.css');
+@import url('react-quill/dist/quill.snow.css');
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Pacifico&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Pacifico&display=swap');
@@ -121,4 +123,10 @@ code {
 .ql-editor {
   min-height: 150px; /* Give some initial height to the editor */
   border-radius: .375rem; /* Match border radius with inputs */
+}
+
+
+
+.job-description-quill {
+  padding: 0rem; /* Match this with other categories */
 }
