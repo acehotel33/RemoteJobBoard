@@ -7,6 +7,7 @@ const DevNavigationBar = () => {
   const pages = [
     { name: 'Home', path: '/' },
     { name: 'Job Page', path: '/job-page' },
+    { name: 'Submit Job', path: '/submit-job'},
     
     // ... any other pages you have
   ];

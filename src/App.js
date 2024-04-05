@@ -6,6 +6,7 @@ import './styles/App.css'; // Adjust the path based on your structure
 // Components
 import HomePage from './components/HomePage';
 import JobPage from './components/JobPage';
+import SubmissionPage from './components/SubmissionPage'; 
 import DevNavigationBar from './components/DevNavigationBar'; // Import the DevNavigationBar
 
 function App() {
@@ -26,7 +27,9 @@ function App() {
 
         {/* Route Configurations */}
         <Routes>
+          
           <Route path="/job-page" element={<JobPage />} />
+          <Route path="/submit-job" element={<SubmissionPage />} />
           <Route path="/" element={<HomePage />} />
         </Routes>
 

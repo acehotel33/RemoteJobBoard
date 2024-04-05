@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Pacifico&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Pacifico&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Satisfy&display=swap');
@@ -51,4 +52,73 @@ code {
   font-size: 1rem;
   outline: none;
   margin-bottom: 1rem;
+}
+
+
+/* Base form field style */
+
+.form-field {
+  margin-bottom: 1rem !important;
+  width: 100%; /* Full width */
+  max-width: 64rem; /* Maximum width */
+  display: block; /* Block display to stack vertically */
+  margin-left: auto; /* Centering the block */
+  margin-right: auto; /* Centering the block */
+
+}
+
+.form-input, .form-select {
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  border-radius: .375rem; /* tailwind's rounded-md equivalent */
+  border: 1px solid #E2E8F0; /* Lighter grey for softer appearance */
+  padding: .5rem .75rem; /* Adjust padding to increase touch area */
+  width: calc(100% - 24px); 
+  transition: border-color .3s; /* Smooth transition for interactions */
+}
+
+/* Focus and hover state for form fields */
+.form-input:focus, .form-select:focus {
+  outline: none;
+  border-color: #800020; /* A shade of purple for focus, or choose your brand color */
+}
+
+/* Label styles */
+.form-label {
+  font-family: 'Inter', sans-serif; /* This is a more readable font for smaller text */
+  font-weight: 600;
+  display: block; /* Ensure labels are block-level for better alignment */
+  margin-bottom: .5rem; /* Space between label and input */
+}
+
+/* Specific styles for checkbox */
+[type="checkbox"] {
+  accent-color: #800020; /* Same as focus color for consistency */
+}
+
+/* Submission Button */
+.submit-button {
+  background-color: #800020; /* Burgundy */
+  color: white;
+  border: none;
+  padding: .5rem 1rem;
+  border-radius: .375rem; /* tailwind's rounded-md equivalent */
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color .3s;
+}
+
+.submit-button:hover {
+  background-color: #9A2E3B; /* A slightly lighter Burgundy */
+}
+
+/* Margin adjustments */
+.form-field:not(:last-child) {
+  margin-bottom: 1.5rem; /* Increase bottom margin for better spacing */
+}
+
+/* Rich text editor customization */
+.ql-editor {
+  min-height: 150px; /* Give some initial height to the editor */
+  border-radius: .375rem; /* Match border radius with inputs */
 }
