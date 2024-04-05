@@ -12,21 +12,27 @@ const JobPage = ({ job, onClose }) => {
   const modalRef = useRef(null);
 
   useEffect(() => {
-    // Define the function inside useEffect
+    // Function to handle click outside
     const handleClickOutside = (event) => {
       if (modalRef.current && !modalRef.current.contains(event.target)) {
         onClose();
       }
     };
-  
-    // Add event listener
+
+    // Disable scrolling on the body
+    document.body.style.overflow = 'hidden';
+
+    // Add event listener for clicks
     document.addEventListener('mousedown', handleClickOutside);
+
+    // Cleanup function
     return () => {
+      // Re-enable scrolling when the component unmounts
+      document.body.style.overflow = 'unset';
       // Remove event listener
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, [onClose]); 
-
+  }, [onClose]); // Depend on onClose to recreate the effect if it changes
 
 
   if (!job) {
@@ -41,10 +47,8 @@ const JobPage = ({ job, onClose }) => {
   };
 
   return (
-    <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full flex justify-center items-start pt-10">
-      <div className="container mx-auto p-4 bg-white max-w-2xl mt-12 rounded-lg shadow-lg" ref={modalRef}>
-
-
+    <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full flex justify-center items-start pb-20">
+      <div className="container mx-auto p-4 bg-white max-w-2xl mt-12 rounded-lg shadow-lg pb-10" ref={modalRef}>
 
         {/* Close Button */}
         <div className="text-right">
