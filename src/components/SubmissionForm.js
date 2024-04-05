@@ -1,11 +1,14 @@
 // src/components/SubmissionForm.js
 import React, { useState } from 'react';
-import ReactQuill from 'react-quill'; // Import ReactQuill for rich text editor
-import 'react-quill/dist/quill.snow.css'; // Import Quill CSS
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
+import DOMPurify from 'dompurify';
 
 
 
 const SubmissionForm = () => {
+
+  
   const [formData, setFormData] = useState({
     company: '',
     role: '',
@@ -41,9 +44,22 @@ const SubmissionForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData); // For now, we're just logging the formData to the console
-    // Here you would typically send the formData to the backend
+    // Sanitize the description content
+    const sanitizedDescription = DOMPurify.sanitize(formData.description);
+
+    // Create a new object with the sanitized description
+    const sanitizedFormData = {
+      ...formData,
+      description: sanitizedDescription,
+    };
+
+    console.log(sanitizedFormData); // Now logging sanitized data
+
+    // TODO: Send sanitizedFormData to the backend
   };
+  
+  // For now, we're just logging the formData to the console
+  // Here you would typically send the formData to the backend
 
   return (
     
