@@ -24,7 +24,7 @@ module.exports = {
             100: '#F5C1C1',  // Lighter shade for secondary elements
             200: '#EB9A9A',  // Secondary contrast
             300: '#E17373',  // Tertiary elements
-            400: '#D74C4C',  // Hover states or active elements
+            400: '#8A2223',  // Hover states or active elements
             500: '#870001',  // Base burgundy
             600: '#790001',  // Slightly darker for hover states or active elements
             700: '#690001',  // Darker shade for text or accents

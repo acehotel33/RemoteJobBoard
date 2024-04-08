@@ -5,10 +5,10 @@ const tags = ["Fully Remote", "English OK", "Backend", "Hybrid", "Software Devel
 
 const TagsFilters = () => {
   return (
-    <div className="flex justify-center my-4">
+    <div className="flex justify-center my-6">
       <div className="flex flex-wrap justify-center gap-2 max-w-3xl mx-auto"> 
         {tags.map((tag, index) => (
-          <div key={index} className="px-4 py-2 border rounded-full text-sm bg-white text-burgundy-700 font-light hover:bg-gray-50">
+          <div key={index} className="px-4 py-2 border border-gray-200 rounded-full shadow-sm text-sm bg-white text-burgundy-500 hover:bg-gray-50">
             {tag}
           </div>
         ))}

@@ -70,7 +70,7 @@ const SubmissionForm = () => {
   // Here you would typically send the formData to the backend
 
   return (
-    <form onSubmit={handleSubmit} className="mx-auto max-w-4xl p-6 bg-white shadow rounded-lg">
+    <form onSubmit={handleSubmit} className="mx-auto max-w-4xl p-6 bg-white shadow-lg rounded-lg">
       {/* Consistent spacing and centered form */}
 
   
@@ -78,18 +78,18 @@ const SubmissionForm = () => {
         {/* Responsive grid layout for fields */}
   
         <div className="form-field">
-          <label htmlFor="company" className="form-label">Company Name</label>
+          <label htmlFor="company" className="form-label text-gray-800">Company Name</label>
           <input type="text" id="company" name="company" className="form-input focus:border-burgundy-500" onChange={handleChange} value={formData.company} />
         </div>
   
         <div className="form-field">
-          <label htmlFor="role" className="form-label">Role</label>
+          <label htmlFor="role" className="form-label text-gray-800">Role</label>
           <input type="text" id="role" name="role" className="form-input focus:border-burgundy-500" onChange={handleChange} value={formData.role} />
         </div>
 
 
         <div className="form-field">
-          <label htmlFor="remoteType" className="form-label">Remote Type</label>
+          <label htmlFor="remoteType" className="form-label text-gray-800">Remote Type</label>
           <select id="remoteType" name="remoteType" className="form-select focus:border-burgundy-500" onChange={handleChange} value={formData.remoteType}>
             <option value="Fully">Fully Remote</option>
             <option value="Partly">Partly Remote</option>
@@ -97,7 +97,7 @@ const SubmissionForm = () => {
         </div>
 
         <div className="form-field">
-          <label htmlFor="jobType" className="form-label">Job Type</label>
+          <label htmlFor="jobType" className="form-label text-gray-800">Job Type</label>
           <select id="jobType" name="jobType" className="form-select focus:border-burgundy-500" onChange={handleChange} value={formData.jobType}>
             <option value="Full-time">Full-time</option>
             <option value="Part-time">Part-time</option>
@@ -107,7 +107,7 @@ const SubmissionForm = () => {
 
         {/* Salary Range Side by Side */}
         <div className="form-field">
-          <label htmlFor="salaryRangeMin" className="form-label">Salary Range Min ($)</label>
+          <label htmlFor="salaryRangeMin" className="form-label text-gray-800">Salary Range Min ($)</label>
           <input
             type="number"
             id="salaryRangeMin"
@@ -119,7 +119,7 @@ const SubmissionForm = () => {
         </div>
         
         <div className="form-field">
-          <label htmlFor="salaryRangeMax" className="form-label">Salary Range Max ($)</label>
+          <label htmlFor="salaryRangeMax" className="form-label text-gray-800">Salary Range Max ($)</label>
           <input
             type="number"
             id="salaryRangeMax"
@@ -133,26 +133,25 @@ const SubmissionForm = () => {
       </div>
 
         {/* English OK? Checkbox right next to label */}
-        <div className="form-field flex justify-between items-center">
+        <div className="form-field flex justify-start text-gray-800">
           <label htmlFor="englishOK" className="form-label">
             English OK?
           </label>
           <input type="checkbox" id="englishOK" name="englishOK" className="form-checkbox" onChange={handleChange} checked={formData.englishOK} />
         </div>
 
-
       
 
         <div className="form-field mt-6">
-          <label className="form-label">Description</label>
-          <ReactQuill theme="snow" className="focus:border-burgundy-500" value={formData.description} onChange={handleDescriptionChange} />
+          <label className="form-label text-gray-800">Description</label>
+          <ReactQuill theme="snow" value={formData.description} onChange={handleDescriptionChange} />
           {/* Ensure ReactQuill fits within form design */}
         </div>
 
         {/* Adjusted position for the submit button for visual importance */}
         <div className="text-center mt-8">
-          <button type="submit" className="submit-button bg-burgundy-500 hover:bg-burgundy-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-            Submit!
+          <button type="submit" className="submit-button bg-burgundy-500 hover:bg-burgundy-700 text-alabaster font-semibold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+            Submit
           </button>
         </div>
           
