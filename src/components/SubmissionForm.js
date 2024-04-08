@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import DOMPurify from 'dompurify';
-
+import axios from 'axios'; 
 
 
 const SubmissionForm = () => {
@@ -47,93 +47,114 @@ const SubmissionForm = () => {
     ALLOWED_ATTR: ['href', 'align', 'alt', 'src', 'title', 'style'], // Add more attributes as needed
   };
   
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+  
     // Sanitize description with custom configuration
     const sanitizedDescription = DOMPurify.sanitize(formData.description, sanitizeConfig);
     const sanitizedFormData = { ...formData, description: sanitizedDescription };
   
-    console.log(sanitizedFormData);  // This is now safe to send to your backend
-  
-    // TODO: Send sanitizedFormData to the backend
+    try {
+      // Send sanitizedFormData to the backend
+      const response = await axios.post('http://localhost:3001/api/jobs', sanitizedFormData);
+      console.log('Job posted successfully', response.data);
+      // Handle post-success actions here, like clearing the form or showing a success message
+    } catch (error) {
+      console.error('Error posting job:', error.response.data.message);
+      // Handle posting errors here, like showing an error message to the user
+    }
   };
+  
   
   // For now, we're just logging the formData to the console
   // Here you would typically send the formData to the backend
 
   return (
-    
-      <form onSubmit={handleSubmit} className="space-y-4 w-full">
-        {/* Inside the <form> in SubmissionForm.js */}
+    <form onSubmit={handleSubmit} className="mx-auto max-w-4xl p-6 bg-white shadow rounded-lg">
+      {/* Consistent spacing and centered form */}
 
-        <div className="form-field w-full">
+  
+      <div className="grid gap-6 md:grid-cols-2">
+        {/* Responsive grid layout for fields */}
+  
+        <div className="form-field">
           <label htmlFor="company" className="form-label">Company Name</label>
-          <input type="text" id="company" name="company" className="form-input w-full" onChange={handleChange} value={formData.company} />
+          <input type="text" id="company" name="company" className="form-input focus:border-burgundy-500" onChange={handleChange} value={formData.company} />
         </div>
-
-        <div className="form-field w-full">
+  
+        <div className="form-field">
           <label htmlFor="role" className="form-label">Role</label>
-          <input type="text" id="role" name="role" className="form-input w-full" onChange={handleChange} value={formData.role} />
+          <input type="text" id="role" name="role" className="form-input focus:border-burgundy-500" onChange={handleChange} value={formData.role} />
         </div>
 
-        <div className="form-field w-full">
+
+        <div className="form-field">
           <label htmlFor="remoteType" className="form-label">Remote Type</label>
-          <select id="remoteType" name="remoteType" className="form-input w-full" onChange={handleChange} value={formData.remoteType}>
+          <select id="remoteType" name="remoteType" className="form-select focus:border-burgundy-500" onChange={handleChange} value={formData.remoteType}>
             <option value="Fully">Fully Remote</option>
             <option value="Partly">Partly Remote</option>
           </select>
         </div>
 
-        <div className="form-field w-full">
+        <div className="form-field">
           <label htmlFor="jobType" className="form-label">Job Type</label>
-          <select id="jobType" name="jobType" className="form-input w-full" onChange={handleChange} value={formData.jobType}>
+          <select id="jobType" name="jobType" className="form-select focus:border-burgundy-500" onChange={handleChange} value={formData.jobType}>
             <option value="Full-time">Full-time</option>
             <option value="Part-time">Part-time</option>
             <option value="Contract">Contract</option>
           </select>
         </div>
 
-        <div className="form-field w-full">
-          <label htmlFor="salaryRangeMin" className="form-label">Salary Range Min</label>
+        {/* Salary Range Side by Side */}
+        <div className="form-field">
+          <label htmlFor="salaryRangeMin" className="form-label">Salary Range Min ($)</label>
           <input
             type="number"
             id="salaryRangeMin"
             name="salaryRangeMin"
-            className="form-input w-full" 
+            className="form-input focus:border-burgundy-500" 
             onChange={handleChange}
             value={formData.salaryRange.min} 
           />
-          <label htmlFor="salaryRangeMax" className="form-label">Salary Range Max</label>
+        </div>
+        
+        <div className="form-field">
+          <label htmlFor="salaryRangeMax" className="form-label">Salary Range Max ($)</label>
           <input
             type="number"
             id="salaryRangeMax"
             name="salaryRangeMax"
-            className="form-input w-full" 
+            className="form-input focus:border-burgundy-500" 
             onChange={handleChange}
             value={formData.salaryRange.max}
           />
         </div>
 
-        <div className="form-field w-full">
-          <label>
-            <input type="checkbox" name="englishOK" className="form-input w-full" onChange={handleChange} checked={formData.englishOK} />
+      </div>
+
+        {/* English OK? Checkbox right next to label */}
+        <div className="form-field flex justify-between items-center">
+          <label htmlFor="englishOK" className="form-label">
             English OK?
           </label>
+          <input type="checkbox" id="englishOK" name="englishOK" className="form-checkbox" onChange={handleChange} checked={formData.englishOK} />
         </div>
 
-        <div className="form-field w-full">
+
+      
+
+        <div className="form-field mt-6">
           <label className="form-label">Description</label>
-          <ReactQuill theme="snow" value={formData.description} onChange={handleDescriptionChange} />
+          <ReactQuill theme="snow" className="focus:border-burgundy-500" value={formData.description} onChange={handleDescriptionChange} />
+          {/* Ensure ReactQuill fits within form design */}
         </div>
 
-        {/* Tags input and other components can be added similarly */}
-
-        {/* Submit Button */}
-          <div className="text-center mt-6">
-            <button type="submit" className="submit-button">
-              Post Job
-            </button>
-          </div>
+        {/* Adjusted position for the submit button for visual importance */}
+        <div className="text-center mt-8">
+          <button type="submit" className="submit-button bg-burgundy-500 hover:bg-burgundy-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+            Submit!
+          </button>
+        </div>
           
       </form>
   

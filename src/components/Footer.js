@@ -3,7 +3,7 @@ import React from 'react';
 
 const Footer = () => {
   return (
-    <footer className="bg-blue-900 text-white text-center p-4 mt-8">
+    <footer className="bg-burgundy-500 text-white text-center p-4 mt-8">
       <div className="max-w-6xl mx-auto flex justify-between">
         {/* Left-aligned items */}
         <div>
