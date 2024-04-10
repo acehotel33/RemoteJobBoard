@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { formatDistanceToNow } from 'date-fns';
 import SortFilters from './SortFilters';
+import TagsFilters from './TagsFilters';
 
 const JobListings = ({ onJobSelect }) => {
   const [jobs, setJobs] = useState([]);
@@ -11,6 +12,8 @@ const JobListings = ({ onJobSelect }) => {
     jobType: '',
     englishOK: false,
   });
+  const [selectedTags, setSelectedTags] = useState([]);
+
 
   useEffect(() => {
     const fetchJobPostings = async () => {
@@ -29,15 +32,18 @@ const JobListings = ({ onJobSelect }) => {
   const formatSalaryRange = (min, max) => `$${min.toLocaleString()} - $${max.toLocaleString()}`;
 
   const filteredJobs = jobs.filter((job) => {
-    return (
-      (filters.remoteType ? job.remoteType === filters.remoteType : true) &&
-      (filters.jobType ? job.jobType === filters.jobType : true) &&
-      (filters.englishOK ? job.englishOK === (filters.englishOK === true) : true)
-    );
+    const matchesRemoteType = filters.remoteType ? job.remoteType === filters.remoteType : true;
+    const matchesJobType = filters.jobType ? job.jobType === filters.jobType : true;
+    const matchesEnglishOK = filters.englishOK ? job.englishOK === filters.englishOK : true;
+    const matchesTags = selectedTags.length === 0 || (Array.isArray(job.descriptors) && job.descriptors.some(tag => selectedTags.includes(tag)));
+    
+    return matchesRemoteType && matchesJobType && matchesEnglishOK && matchesTags;
   });
+  
 
   return (
     <div>
+      <TagsFilters selectedTags={selectedTags} setSelectedTags={setSelectedTags} />
       <SortFilters filters={filters} setFilters={setFilters} />
       <div className="my-2 mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
         {filteredJobs.map((job) => (

@@ -1,5 +1,5 @@
 import React from 'react';
-import TagsFilters from './TagsFilters';
+// import TagsFilters from './TagsFilters';
 import Header from './Header';
 
 const HeroSection = () => {
@@ -14,7 +14,7 @@ const HeroSection = () => {
           placeholder="Search for jobs or companies..."
         />
       </div>
-      <TagsFilters />
+      {/* <TagsFilters /> */}
     </div>
   );
 };
