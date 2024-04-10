@@ -1,4 +1,4 @@
-
+// src/components/JobListings.js
 
 import React, { useState, useEffect } from 'react';
 import { formatDistanceToNow } from 'date-fns';
@@ -6,6 +6,11 @@ import SortFilters from './SortFilters';
 
 const JobListings = ({ onJobSelect }) => {
   const [jobs, setJobs] = useState([]);
+  const [filters, setFilters] = useState({
+    remoteType: '',
+    jobType: '',
+    englishOK: false,
+  });
 
   useEffect(() => {
     const fetchJobPostings = async () => {
@@ -23,12 +28,19 @@ const JobListings = ({ onJobSelect }) => {
 
   const formatSalaryRange = (min, max) => `$${min.toLocaleString()} - $${max.toLocaleString()}`;
 
+  const filteredJobs = jobs.filter((job) => {
+    return (
+      (filters.remoteType ? job.remoteType === filters.remoteType : true) &&
+      (filters.jobType ? job.jobType === filters.jobType : true) &&
+      (filters.englishOK ? job.englishOK === (filters.englishOK === true) : true)
+    );
+  });
+
   return (
     <div>
-      <SortFilters />
-
-      <div className="my-2 mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 scroll-indicator">
-        {jobs.map((job) => (
+      <SortFilters filters={filters} setFilters={setFilters} />
+      <div className="my-2 mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+        {filteredJobs.map((job) => (
           <div 
             key={job._id} 
             className="bg-white shadow-lg rounded-lg px-6 py-4 border border-gray-200 hover:bg-gray-50 cursor-pointer mb-6 flex justify-between items-center"

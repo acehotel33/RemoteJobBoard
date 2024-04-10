@@ -1,7 +1,7 @@
 // src/components/TagsFilters.js
 import React from 'react';
 
-const tags = ["Fully Remote", "English OK", "Backend", "Hybrid", "Software Development", "Backend", "Hybrid", "Software Development","Backend", "Hybrid", "Software Development","Backend", "Hybrid", "Software Development"]; // Example categories
+const tags = ["Fully Remote", "Backend", "Hybrid", "Software Development"]; // Example categories
 
 const TagsFilters = () => {
   return (

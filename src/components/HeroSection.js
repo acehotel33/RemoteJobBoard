@@ -5,7 +5,7 @@ import Header from './Header';
 const HeroSection = () => {
   return (
     <div className="mt-0 pt-4 hero-section bg-alabaster">
-      <div className="fixed top-6 right-60"><Header /></div>
+      <div><Header /></div>
       <h1 className="mb-10  text-6xl font-pacifico text-burgundy-500">WeRemote!</h1>
       <div className="search-bar-wrapper">
         <input

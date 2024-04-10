@@ -1,25 +1,15 @@
 // src/components/Header.js
 import React from 'react';
+import { Link } from 'react-router-dom'; 
 
 const Header = () => {
   return (
-
-    <header className="text-burgundy-500 text-center">
-        <div className="max-w-7xl mx-auto flex justify-between">
-            {/* Left-aligned items */}
-            <div>
-                    <a href="/" className="header-link hover:underline">weremote.ge</a>
-                      {/* Add additional links or content here */}
-                  </div>
-
-              {/* Right-aligned items */}
-              <div>
-                  <a href="/submit-job" className="header-link hover:underline">Post a Job</a>
-                  {/* Add additional links or content here */}
-              </div>
-          </div>
+    <header className="sticky top-0 flex justify-between items-center py-2 px-8 mx-16 bg-transparent z-10">
+      <Link to="/" className="text-burgundy-500 hover:underline">WeRemote.ge</Link>
+      <Link to="/submit-job" className="text-burgundy-500 hover:underline">Post Your Job</Link>
     </header>
   );
 };
 
 export default Header;
+
