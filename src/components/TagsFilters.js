@@ -16,7 +16,7 @@ const TagsFilters = ({ selectedTags, setSelectedTags }) => {
   };
 
   return (
-    <div className="flex justify-center my-4 mb-10">
+    <div className="flex justify-center mt-6 mb-10">
       <div className="flex flex-wrap justify-center gap-2 max-w-3xl mx-auto"> 
         {tags.map((tag, index) => (
           <div key={index}
