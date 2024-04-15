@@ -7,13 +7,13 @@ const HeroSection = () => {
     <div className="mt-0 pt-4 hero-section">
       <div><Header /></div>
       <h1 className="mb-10  text-6xl font-pacifico text-accent-500">WeRemote!</h1>
-      <div className="search-bar-wrapper">
+      {/* <div className="search-bar-wrapper">
         <input
           type="text"
           className="search-bar"
           placeholder="Search for jobs or companies..."
         />
-      </div>
+      </div> */}
       
     </div>
   );

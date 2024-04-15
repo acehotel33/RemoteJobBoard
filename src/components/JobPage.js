@@ -50,7 +50,7 @@ const JobPage = ({ job, onClose }) => {
 
   return (
     <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full flex justify-center items-start pb-20">
-      <div className="container mx-auto p-4 pt-2 bg-white max-w-2xl mt-12 rounded-lg shadow-lg pb-10" ref={modalRef}>
+      <div className="container mx-auto p-5 pt-2 bg-white max-w-2xl mt-12 rounded-lg shadow-lg pb-10" ref={modalRef}>
 
         {/* Close Button */}
         <div className="text-right">
@@ -64,10 +64,12 @@ const JobPage = ({ job, onClose }) => {
             <p className="text-xl text-gray-900 mb-4 pb-2">{job.company}</p>
           </div>
           
-          <div className="mt-6 text-center">
-            <a href={job.applicationLink} target="_blank" rel="noopener noreferrer" className="submit-button bg-accent-500 text-white rounded-full">
-              Apply Now
-            </a>
+          <div >
+            <div className="flex justify-end items-center mr-2">
+              <a href={job.applicationLink} target="_blank" rel="noopener noreferrer" className="mt-5 submit-button bg-accent-500 text-white rounded-full">
+                Apply Now
+              </a>
+            </div>
           </div>
           
         </div>
@@ -77,27 +79,27 @@ const JobPage = ({ job, onClose }) => {
         <div className="border-t border-b border-gray-200 pb-5 grid gap-1 md:grid-cols-2">
 
           <div className="mt-4">
-            <h2 className="text-lg font-semibold">Job Type</h2>
+            <h2 className="text-sl font-semibold">Job Type</h2>
             <p className="text-accent-500">{job.jobType}</p>
           </div>
 
           <div className="mt-4">
-            <h2 className="text-lg font-semibold">English OK?</h2>
+            <h2 className="text-sl font-semibold">English OK?</h2>
             <p className="text-accent-500">{job.englishOK ? 'Yes' : 'No'}</p>
           </div>
 
           <div className="mt-4">
-            <h2 className="text-lg font-semibold">Remote Type</h2>
+            <h2 className="text-sl font-semibold">Remote Type</h2>
             <p className="text-accent-500">{job.remoteType}</p>
           </div>
 
           <div className="mt-4">
-            <h2 className="text-lg font-semibold">Posted On</h2>
+            <h2 className="text-sl font-semibold">Posted On</h2>
             <p className="text-accent-500">{formatDate(job.datePosted)}</p>
           </div>
 
           <div className="mt-4">
-            <h2 className="text-lg font-semibold">Salary Range</h2>
+            <h2 className="text-sl font-semibold">Salary Range</h2>
             <p className="text-accent-500">{displaySalaryRange(job.salaryRange.min, job.salaryRange.max)}</p>
           </div>
           

@@ -41,10 +41,10 @@ code {
 
 .search-bar {
   padding: 1rem;
-  border: none;
+  border-width: 1px;
   border-radius: 25px; /* Rounded edges */
   width: 100%;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
   font-size: 1rem;
   outline: none;
   margin-bottom: 1rem;

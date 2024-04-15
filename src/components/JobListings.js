@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { formatDistanceToNow } from 'date-fns';
+import SearchBar from './SearchBar';
 import SortFilters from './SortFilters';
 import TagsFilters from './TagsFilters';
 import { displaySalaryRange } from '../utils'
@@ -14,7 +15,7 @@ const JobListings = ({ onJobSelect }) => {
     englishOK: false,
   });
   const [selectedTags, setSelectedTags] = useState([]);
-
+  const [searchTerm, setSearchTerm] = useState(''); 
 
   useEffect(() => {
     const fetchJobPostings = async () => {
@@ -30,11 +31,9 @@ const JobListings = ({ onJobSelect }) => {
     fetchJobPostings();
   }, []);
 
-  // const formatSalaryRange = (min, max) => {
-  //   const minSalary = min || 0; // Default to 0 if min is nullish
-  //   const maxSalary = max || 0; // Default to 0 if max is nullish
-  //   return `$${minSalary.toLocaleString()} - $${maxSalary.toLocaleString()}`;
-  // };
+  const handleSearchChange = (e) => {
+    setSearchTerm(e.target.value.toLowerCase());
+  };
   
 
   const filteredJobs = jobs.filter((job) => {
@@ -42,14 +41,17 @@ const JobListings = ({ onJobSelect }) => {
     const matchesJobType = filters.jobType ? job.jobType === filters.jobType : true;
     const matchesEnglishOK = filters.englishOK ? job.englishOK === filters.englishOK : true;
     const matchesTags = selectedTags.length === 0 || (Array.isArray(job.descriptors) && selectedTags.every(tag => job.descriptors.includes(tag)));
-    
-    return matchesRemoteType && matchesJobType && matchesEnglishOK && matchesTags;
-  });
-  
-  
+    const lowerCaseSearchTerm = searchTerm.toLowerCase();
+    const matchesSearch = !searchTerm || job.role.toLowerCase().includes(lowerCaseSearchTerm) ||
+                          job.company.toLowerCase().includes(lowerCaseSearchTerm) ||
+                          (job.descriptors && job.descriptors.some(tag => tag.toLowerCase().includes(lowerCaseSearchTerm)));
 
+    return matchesRemoteType && matchesJobType && matchesEnglishOK && matchesTags && matchesSearch;
+  });  
+  
   return (
     <div>
+      <SearchBar value={searchTerm} onChange={handleSearchChange} />
       <TagsFilters selectedTags={selectedTags} setSelectedTags={setSelectedTags} />
       <SortFilters filters={filters} setFilters={setFilters} />
       <div className="my-2 mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 ">
