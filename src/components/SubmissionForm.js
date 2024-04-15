@@ -23,7 +23,7 @@ const SubmissionForm = () => {
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     if (name === 'salaryRangeMin' || name === 'salaryRangeMax') {
-      // Use 'min' or 'max' as the key based on the input's name
+      // Use 'min' or 'max' as the key accentd on the input's name
       const key = name === 'salaryRangeMin' ? 'min' : 'max';
       setFormData(prev => ({
         ...prev,
@@ -79,18 +79,18 @@ const SubmissionForm = () => {
   
         <div className="form-field">
           <label htmlFor="company" className="form-label text-gray-800">Company Name</label>
-          <input type="text" id="company" name="company" className="form-input focus:border-burgundy-500" onChange={handleChange} value={formData.company} />
+          <input type="text" id="company" name="company" className="form-input focus:border-accent-500" onChange={handleChange} value={formData.company} />
         </div>
   
         <div className="form-field">
           <label htmlFor="role" className="form-label text-gray-800">Role</label>
-          <input type="text" id="role" name="role" className="form-input focus:border-burgundy-500" onChange={handleChange} value={formData.role} />
+          <input type="text" id="role" name="role" className="form-input focus:border-accent-500" onChange={handleChange} value={formData.role} />
         </div>
 
 
         <div className="form-field">
           <label htmlFor="remoteType" className="form-label text-gray-800">Remote Type</label>
-          <select id="remoteType" name="remoteType" className="form-select focus:border-burgundy-500" onChange={handleChange} value={formData.remoteType}>
+          <select id="remoteType" name="remoteType" className="form-select focus:border-accent-500" onChange={handleChange} value={formData.remoteType}>
             <option value="Fully">Fully Remote</option>
             <option value="Partly">Partly Remote</option>
           </select>
@@ -98,7 +98,7 @@ const SubmissionForm = () => {
 
         <div className="form-field">
           <label htmlFor="jobType" className="form-label text-gray-800">Job Type</label>
-          <select id="jobType" name="jobType" className="form-select focus:border-burgundy-500" onChange={handleChange} value={formData.jobType}>
+          <select id="jobType" name="jobType" className="form-select focus:border-accent-500" onChange={handleChange} value={formData.jobType}>
             <option value="Full-time">Full-time</option>
             <option value="Part-time">Part-time</option>
             <option value="Contract">Contract</option>
@@ -112,7 +112,7 @@ const SubmissionForm = () => {
             type="number"
             id="salaryRangeMin"
             name="salaryRangeMin"
-            className="form-input focus:border-burgundy-500" 
+            className="form-input focus:border-accent-500" 
             onChange={handleChange}
             value={formData.salaryRange.min} 
           />
@@ -124,7 +124,7 @@ const SubmissionForm = () => {
             type="number"
             id="salaryRangeMax"
             name="salaryRangeMax"
-            className="form-input focus:border-burgundy-500" 
+            className="form-input focus:border-accent-500" 
             onChange={handleChange}
             value={formData.salaryRange.max}
           />
@@ -133,7 +133,7 @@ const SubmissionForm = () => {
       </div>
 
         {/* English OK? Checkbox right next to label */}
-        <div className="form-field flex justify-start text-gray-800">
+        <div className="form-field flex justify-between items-center text-gray-800">
           <label htmlFor="englishOK" className="form-label">
             English OK?
           </label>
@@ -150,7 +150,7 @@ const SubmissionForm = () => {
 
         {/* Adjusted position for the submit button for visual importance */}
         <div className="text-center mt-8">
-          <button type="submit" className="submit-button bg-burgundy-500 hover:bg-burgundy-700 text-alabaster font-semibold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+          <button type="submit" className="submit-button bg-accent-500 hover:bg-accent-500 text-base font-semibold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
             Submit
           </button>
         </div>

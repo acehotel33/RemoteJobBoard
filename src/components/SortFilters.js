@@ -20,7 +20,7 @@ const SortFilters = ({ filters, setFilters }) => {
         <select 
           id="remoteType" 
           name="remoteType" 
-          className="px-4 border rounded-full cursor-pointer shadow-md text-sl bg-white text-gray-700 hover:bg-gray-50"
+          className="px-4 border rounded-full cursor-pointer shadow-md text-sm bg-white hover:bg-gray-50"
           onChange={handleChange}
           value={filters.remoteType}
           >
@@ -32,7 +32,7 @@ const SortFilters = ({ filters, setFilters }) => {
         <select 
           id="jobType" 
           name="jobType" 
-          className="px-4 border rounded-full cursor-pointer shadow-md text-sl bg-white text-gray-700 hover:bg-gray-50"
+          className="px-4 border rounded-full cursor-pointer shadow-md text-sm bg-white  hover:bg-gray-50"
           onChange={handleChange}
           value={filters.jobType}
           >
@@ -40,9 +40,10 @@ const SortFilters = ({ filters, setFilters }) => {
             <option value="Full-time">Full-time</option>
             <option value="Part-time">Part-time</option>
             <option value="Contract">Contract</option>
+            <option value="Internship">Internship</option>
         </select>
 
-        <div className="px-4 border rounded-full cursor-pointer shadow-md text-sl bg-white text-gray-700 hover:bg-gray-50 flex items-center">
+        <div className="px-4 border rounded-full cursor-pointer shadow-md text-sm bg-white  hover:bg-gray-50 flex items-center">
           <label htmlFor="englishOK" className="form-label cursor-pointer text-gray-700 mr-2 mt-2">
             English OK
           </label>

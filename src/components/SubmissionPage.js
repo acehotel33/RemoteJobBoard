@@ -4,6 +4,7 @@ import SubmissionForm from './SubmissionForm';
 
 const SubmissionPage = () => {
   return (
+    
     // Use the same classes for consistent width and padding
     <div className="container mx-auto p-10 pb-20 max-w-4xl">
       {/* <h1 className="text-2xl font-bold mb-4">Post a Job</h1> */}
@@ -11,6 +12,7 @@ const SubmissionPage = () => {
       {/* Title for context */}
       <SubmissionForm />
     </div>
+    
   );
 };
 

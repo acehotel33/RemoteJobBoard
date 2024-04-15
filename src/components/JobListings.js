@@ -35,17 +35,18 @@ const JobListings = ({ onJobSelect }) => {
     const matchesRemoteType = filters.remoteType ? job.remoteType === filters.remoteType : true;
     const matchesJobType = filters.jobType ? job.jobType === filters.jobType : true;
     const matchesEnglishOK = filters.englishOK ? job.englishOK === filters.englishOK : true;
-    const matchesTags = selectedTags.length === 0 || (Array.isArray(job.descriptors) && job.descriptors.some(tag => selectedTags.includes(tag)));
+    const matchesTags = selectedTags.length === 0 || (Array.isArray(job.descriptors) && selectedTags.every(tag => job.descriptors.includes(tag)));
     
     return matchesRemoteType && matchesJobType && matchesEnglishOK && matchesTags;
   });
+  
   
 
   return (
     <div>
       <TagsFilters selectedTags={selectedTags} setSelectedTags={setSelectedTags} />
       <SortFilters filters={filters} setFilters={setFilters} />
-      <div className="my-2 mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+      <div className="my-2 mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 ">
         {filteredJobs.map((job) => (
           <div 
             key={job._id} 
@@ -53,11 +54,11 @@ const JobListings = ({ onJobSelect }) => {
             onClick={() => onJobSelect(job)}
           >
             <div>
-              <h3 className="text-lg font-bold text-gray-800">{job.role}</h3>
+              <h3 className="text-lg font-bold">{job.role}</h3>
               <p className="text-gray-600">{job.company}</p>
               <p className="text-gray-500">{formatSalaryRange(job.salaryRange.min, job.salaryRange.max)}</p>
             </div>
-            <p className="text-sm text-burgundy-600 font-light italic">{formatDistanceToNow(new Date(job.datePosted)) + ' ago'}</p>
+            <p className="text-sm text-accent-500 font-light italic">{formatDistanceToNow(new Date(job.datePosted)) + ' ago'}</p>
           </div>
         ))}
       </div>

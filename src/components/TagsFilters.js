@@ -1,7 +1,7 @@
 // src/components/TagsFilters.js
 import React from 'react';
 
-const tags = ["Copywriting", "Agile", "SEO", "Risk Assessment", "Scrum", "Team Leadership", "Budget Management"];
+const tags = ["Copywriting", "Agile", "SEO", "Risk Assessment", "React", "Scrum", "Team Leadership", "Budget Management", "Content Marketing", "Blogging"];
 
 const TagsFilters = ({ selectedTags, setSelectedTags }) => {
 
@@ -16,11 +16,11 @@ const TagsFilters = ({ selectedTags, setSelectedTags }) => {
   };
 
   return (
-    <div className="flex justify-center my-6">
+    <div className="flex justify-center my-4 mb-10">
       <div className="flex flex-wrap justify-center gap-2 max-w-3xl mx-auto"> 
         {tags.map((tag, index) => (
           <div key={index}
-            className={`px-4 py-2 border cursor-pointer border-gray-200 rounded-full shadow-sm text-sm ${selectedTags.includes(tag) ? 'bg-burgundy-500 text-white hover:bg-burgundy-600' : 'bg-white text-burgundy-500 hover:bg-gray-50 hover:text-burgundy-600'}`}
+            className={`px-4 py-2 border cursor-pointer border-gray-200 rounded-full shadow-sm text-sm ${selectedTags.includes(tag) ? 'bg-accent-500 text-white hover:bg-accent-500' : 'bg-white text-accent-500 hover:bg-gray-50 hover:text-accent-500'}`}
                onClick={() => toggleTag(tag)}
           >
             {tag}

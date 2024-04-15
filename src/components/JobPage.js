@@ -64,7 +64,7 @@ const JobPage = ({ job, onClose }) => {
           </div>
           
           <div className="mt-6 text-center">
-            <button className="submit-button bg-burgundy-500 text-white rounded-full">
+            <button className="submit-button bg-accent-500 text-white rounded-full">
               Apply Now
             </button>
           </div>
@@ -77,27 +77,27 @@ const JobPage = ({ job, onClose }) => {
 
           <div className="mt-4">
             <h2 className="text-lg font-semibold">Job Type</h2>
-            <p className="text-burgundy-600">{job.jobType}</p>
+            <p className="text-accent-500">{job.jobType}</p>
           </div>
 
           <div className="mt-4">
             <h2 className="text-lg font-semibold">English OK?</h2>
-            <p className="text-burgundy-600">{job.englishOK ? 'Yes' : 'No'}</p>
+            <p className="text-accent-500">{job.englishOK ? 'Yes' : 'No'}</p>
           </div>
 
           <div className="mt-4">
             <h2 className="text-lg font-semibold">Remote Type</h2>
-            <p className="text-burgundy-600">{job.remoteType}</p>
+            <p className="text-accent-500">{job.remoteType}</p>
           </div>
 
           <div className="mt-4">
             <h2 className="text-lg font-semibold">Posted On</h2>
-            <p className="text-burgundy-600">{formatDate(job.datePosted)}</p>
+            <p className="text-accent-500">{formatDate(job.datePosted)}</p>
           </div>
 
           <div className="mt-4">
             <h2 className="text-lg font-semibold">Salary Range</h2>
-            <p className="text-burgundy-600">${job.salaryRange.min.toLocaleString()} - ${job.salaryRange.max.toLocaleString()}</p>
+            <p className="text-accent-500">${job.salaryRange.min.toLocaleString()} - ${job.salaryRange.max.toLocaleString()}</p>
           </div>
           
 
@@ -116,7 +116,7 @@ const JobPage = ({ job, onClose }) => {
             <h2 className="text-lg font-semibold">Tags</h2>
             <div className="mt-2 flex flex-wrap">
               {job.descriptors.map((desc, index) => (
-                <span key={index} className="px-3 py-1 m-1 border rounded-full text-sm bg-blue-100 text-blue-900">
+                <span key={index} className="px-3 py-1 m-1 border rounded-full text-sm bg-gray-50 text-accent-500">
                   {desc}
                 </span>
               ))}
@@ -125,7 +125,7 @@ const JobPage = ({ job, onClose }) => {
 
         {/* Apply Now Button */}
         <div className="mt-6 text-center">
-        <button className="submit-button bg-burgundy-500 text-white rounded-full">
+        <button className="submit-button bg-accent-500 text-white rounded-full">
           Apply Now
         </button>
         </div>

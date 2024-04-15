@@ -12,7 +12,7 @@ import SubmissionPage from './components/SubmissionPage';
 function App() {
   return (
     <Router>
-      <div className="flex flex-col h-screen justify-between"> {/* Make sure the main div is a flex container */}
+      <div className="flex flex-col h-screen justify-between bg-accent"> {/* Make sure the main div is a flex container */}
         
         <Routes>
           <Route path="/job-page" element={<JobPage />} />

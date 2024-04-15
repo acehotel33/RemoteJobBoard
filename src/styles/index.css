@@ -12,7 +12,8 @@
 
 body {
   font-family: 'Inter', sans-serif;
-  background-color:#F8F8F8;
+  
+  color: #2e2e2e;
 }
 
 
@@ -75,12 +76,12 @@ code {
 .form-label {
   margin-bottom: .5rem;
   font-weight: 600;
-  color: #333;
+  
 }
 
 /* Specific styles for checkbox */
 [type="checkbox"] {
-  accent-color: #870001; /* Same as focus color for consistency */
+  accent-color: #2a77f1; /* Same as focus color for consistency */
 }
 
 .form-checkbox {
