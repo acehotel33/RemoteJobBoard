@@ -81,7 +81,7 @@ code {
 
 /* Specific styles for checkbox */
 [type="checkbox"] {
-  accent-color: #2a77f1; /* Same as focus color for consistency */
+  accent-color: #870001; /* Same as focus color for consistency */
 }
 
 .form-checkbox {
