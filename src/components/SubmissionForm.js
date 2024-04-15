@@ -5,36 +5,70 @@ import 'react-quill/dist/quill.snow.css';
 import DOMPurify from 'dompurify';
 import axios from 'axios'; 
 
-
 const SubmissionForm = () => {
-
-  
   const [formData, setFormData] = useState({
     company: '',
     role: '',
-    remoteType: 'Fully',
-    jobType: 'Full-time',
+    remoteType: '',
+    jobType: '',
     salaryRange: { min: '', max: '' },
     englishOK: false,
     description: '',
     tags: [],
+    applicationLink: '', 
   });
+  const [errors, setErrors] = useState({});
+
+  const validateForm = () => {
+    let formIsValid = true;
+    let newErrors = {};
+
+    // Company and role cannot be empty
+    if (!formData.company) {
+      formIsValid = false;
+      newErrors.company = "Company name cannot be empty";
+    }
+    if (!formData.role) {
+      formIsValid = false;
+      newErrors.role = "Role cannot be empty";
+    }
+    // Remote Type and Job Type should not be default values
+    if (!formData.remoteType || formData.remoteType === "Remote Type") {
+      formIsValid = false;
+      newErrors.remoteType = "Please select a valid remote type";
+    }
+    if (!formData.jobType || formData.jobType === "Job Type") {
+      formIsValid = false;
+      newErrors.jobType = "Please select a valid job type";
+    }
+    // Description cannot be empty
+    if (!formData.description) {
+      formIsValid = false;
+      newErrors.description = "Description cannot be empty";
+    }
+    // Application link should be a valid URL
+    if (!formData.applicationLink || !/^https?:\/\//i.test(formData.applicationLink)) {
+      formIsValid = false;
+      newErrors.applicationLink = "Please provide a valid URL";
+    }
+
+    setErrors(newErrors);
+    return formIsValid;
+  };
+
+
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
-    if (name === 'salaryRangeMin' || name === 'salaryRangeMax') {
-      // Use 'min' or 'max' as the key accentd on the input's name
-      const key = name === 'salaryRangeMin' ? 'min' : 'max';
-      setFormData(prev => ({
-        ...prev,
-        salaryRange: { ...prev.salaryRange, [key]: value },
-      }));
-    } else if (type === 'checkbox') {
-      setFormData(prev => ({ ...prev, [name]: checked }));
-    } else {
-      setFormData(prev => ({ ...prev, [name]: value }));
-    }
+    setFormData(prev => ({
+      ...prev,
+      [name]: type === 'checkbox' ? checked : value
+    }));
+    // Clear errors for a particular field when it's edited
+    setErrors(prev => ({ ...prev, [name]: undefined }));
   };
+
+  
 
   const handleDescriptionChange = (value) => {
     setFormData(prev => ({ ...prev, description: value }));
@@ -49,21 +83,21 @@ const SubmissionForm = () => {
   
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
-    // Sanitize description with custom configuration
-    const sanitizedDescription = DOMPurify.sanitize(formData.description, sanitizeConfig);
-    const sanitizedFormData = { ...formData, description: sanitizedDescription };
-  
+    if (!validateForm()) {
+      return; // Stop the form submission if validation fails
+    }
+
+    // Proceed with form submission if validation passes
     try {
-      // Send sanitizedFormData to the backend
+      const sanitizedDescription = DOMPurify.sanitize(formData.description, sanitizeConfig);
+      const sanitizedFormData = { ...formData, description: sanitizedDescription };
       const response = await axios.post('http://localhost:3001/api/jobs', sanitizedFormData);
       console.log('Job posted successfully', response.data);
-      // Handle post-success actions here, like clearing the form or showing a success message
     } catch (error) {
       console.error('Error posting job:', error.response.data.message);
-      // Handle posting errors here, like showing an error message to the user
     }
   };
+
   
   
   // For now, we're just logging the formData to the console
@@ -80,11 +114,13 @@ const SubmissionForm = () => {
         <div className="form-field">
           <label htmlFor="company" className="form-label text-gray-800">Company Name</label>
           <input type="text" id="company" name="company" className="form-input focus:border-accent-500" onChange={handleChange} value={formData.company} />
+          {errors.company && <div className="text-accent-500 italic">{errors.company}</div>}
         </div>
   
         <div className="form-field">
           <label htmlFor="role" className="form-label text-gray-800">Role</label>
           <input type="text" id="role" name="role" className="form-input focus:border-accent-500" onChange={handleChange} value={formData.role} />
+          {errors.role && <div className="text-accent-500 italic">{errors.role}</div>}
         </div>
 
 
@@ -94,6 +130,7 @@ const SubmissionForm = () => {
             <option value="Fully">Fully Remote</option>
             <option value="Partly">Partly Remote</option>
           </select>
+          {errors.remoteType && <div className="text-accent-500 italic">{errors.remoteType}</div>}
         </div>
 
         <div className="form-field">
@@ -103,6 +140,7 @@ const SubmissionForm = () => {
             <option value="Part-time">Part-time</option>
             <option value="Contract">Contract</option>
           </select>
+          {errors.jobType && <div className="text-accent-500 italic">{errors.jobType}</div>}
         </div>
 
         {/* Salary Range Side by Side */}
@@ -146,6 +184,21 @@ const SubmissionForm = () => {
           <label className="form-label text-gray-800">Description</label>
           <ReactQuill theme="snow" value={formData.description} onChange={handleDescriptionChange} />
           {/* Ensure ReactQuill fits within form design */}
+          {errors.description && <div className="text-accent-500 italic">{errors.description}</div>}
+        </div>
+
+        <div className="form-field">
+          <label htmlFor="applicationLink" className="form-label text-gray-800">Application Link</label>
+          <input
+            type="text"
+            id="applicationLink"
+            name="applicationLink"
+            className="form-input focus:border-accent-500"
+            placeholder="https://"
+            onChange={handleChange}
+            value={formData.applicationLink}
+          />
+          {errors.applicationLink && <div className="text-accent-500 italic">{errors.applicationLink}</div>}
         </div>
 
         {/* Adjusted position for the submit button for visual importance */}

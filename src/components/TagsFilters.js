@@ -20,7 +20,7 @@ const TagsFilters = ({ selectedTags, setSelectedTags }) => {
       <div className="flex flex-wrap justify-center gap-2 max-w-3xl mx-auto"> 
         {tags.map((tag, index) => (
           <div key={index}
-            className={`px-4 py-2 border cursor-pointer border-gray-200 rounded-full shadow-sm text-sm ${selectedTags.includes(tag) ? 'bg-accent-500 text-white hover:bg-accent-500' : 'bg-white text-accent-500 hover:bg-gray-50 hover:text-accent-500'}`}
+          className={`cursor-pointer px-4 py-2 border border-gray-200 rounded-full shadow-sm text-sm ${selectedTags.includes(tag) ? 'bg-accent-500 text-white hover:bg-accent-500' : 'bg-white text-burgundy-500 hover:bg-gray-50 hover:text-burgundy-500'}`}
                onClick={() => toggleTag(tag)}
           >
             {tag}

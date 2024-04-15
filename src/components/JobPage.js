@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import ReactQuill from 'react-quill';
+import { displaySalaryRange } from '../utils';
 
 
 const JobPage = ({ job, onClose }) => {
@@ -64,9 +65,9 @@ const JobPage = ({ job, onClose }) => {
           </div>
           
           <div className="mt-6 text-center">
-            <button className="submit-button bg-accent-500 text-white rounded-full">
+            <a href={job.applicationLink} target="_blank" rel="noopener noreferrer" className="submit-button bg-accent-500 text-white rounded-full">
               Apply Now
-            </button>
+            </a>
           </div>
           
         </div>
@@ -97,7 +98,7 @@ const JobPage = ({ job, onClose }) => {
 
           <div className="mt-4">
             <h2 className="text-lg font-semibold">Salary Range</h2>
-            <p className="text-accent-500">${job.salaryRange.min.toLocaleString()} - ${job.salaryRange.max.toLocaleString()}</p>
+            <p className="text-accent-500">{displaySalaryRange(job.salaryRange.min, job.salaryRange.max)}</p>
           </div>
           
 
@@ -125,9 +126,9 @@ const JobPage = ({ job, onClose }) => {
 
         {/* Apply Now Button */}
         <div className="mt-6 text-center">
-        <button className="submit-button bg-accent-500 text-white rounded-full">
+        <a href={job.applicationLink} target="_blank" rel="noopener noreferrer" className="submit-button bg-accent-500 text-white rounded-full">
           Apply Now
-        </button>
+        </a>
         </div>
       </div>
     </div>

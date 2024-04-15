@@ -31,6 +31,7 @@ const jobPostingSchema = new mongoose.Schema({
   englishOK: Boolean,
   description: String,
   descriptors: [String],
+  applicationLink: String,
 });
 
 // Create Mongoose model

@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { formatDistanceToNow } from 'date-fns';
 import SortFilters from './SortFilters';
 import TagsFilters from './TagsFilters';
+import { displaySalaryRange } from '../utils'
 
 const JobListings = ({ onJobSelect }) => {
   const [jobs, setJobs] = useState([]);
@@ -29,7 +30,12 @@ const JobListings = ({ onJobSelect }) => {
     fetchJobPostings();
   }, []);
 
-  const formatSalaryRange = (min, max) => `$${min.toLocaleString()} - $${max.toLocaleString()}`;
+  // const formatSalaryRange = (min, max) => {
+  //   const minSalary = min || 0; // Default to 0 if min is nullish
+  //   const maxSalary = max || 0; // Default to 0 if max is nullish
+  //   return `$${minSalary.toLocaleString()} - $${maxSalary.toLocaleString()}`;
+  // };
+  
 
   const filteredJobs = jobs.filter((job) => {
     const matchesRemoteType = filters.remoteType ? job.remoteType === filters.remoteType : true;
@@ -56,7 +62,7 @@ const JobListings = ({ onJobSelect }) => {
             <div>
               <h3 className="text-lg font-bold">{job.role}</h3>
               <p className="text-gray-600">{job.company}</p>
-              <p className="text-gray-500">{formatSalaryRange(job.salaryRange.min, job.salaryRange.max)}</p>
+              <p className="text-gray-500">{displaySalaryRange(job.salaryRange.min, job.salaryRange.max)}</p>
             </div>
             <p className="text-sm text-accent-500 font-light italic">{formatDistanceToNow(new Date(job.datePosted)) + ' ago'}</p>
           </div>
