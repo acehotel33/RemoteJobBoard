@@ -3,7 +3,9 @@ import React, { useState } from 'react';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import DOMPurify from 'dompurify';
-import axios from 'axios'; 
+import axios from 'axios';
+import API_URL from '../config';  // Import the API URL configuration
+
 
 const SubmissionForm = () => {
   const [formData, setFormData] = useState({
@@ -91,10 +93,10 @@ const SubmissionForm = () => {
     try {
       const sanitizedDescription = DOMPurify.sanitize(formData.description, sanitizeConfig);
       const sanitizedFormData = { ...formData, description: sanitizedDescription };
-      const response = await axios.post('http://localhost:3001/api/jobs', sanitizedFormData);
+      const response = await axios.post(`${API_URL}/jobs`, sanitizedFormData);
       console.log('Job posted successfully', response.data);
     } catch (error) {
-      console.error('Error posting job:', error.response.data.message);
+      console.error('Error posting job:', error.response ? error.response.data.message : error.message);
     }
   };
 

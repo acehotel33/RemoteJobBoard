@@ -5,7 +5,9 @@ import { formatDistanceToNow } from 'date-fns';
 import SearchBar from './SearchBar';
 import SortFilters from './SortFilters';
 import TagsFilters from './TagsFilters';
-import { displaySalaryRange } from '../utils'
+import { displaySalaryRange } from '../utils';
+import API_URL from '../config';  // Import the API URL configuration
+
 
 const JobListings = ({ onJobSelect }) => {
   const [jobs, setJobs] = useState([]);
@@ -20,7 +22,7 @@ const JobListings = ({ onJobSelect }) => {
   useEffect(() => {
     const fetchJobPostings = async () => {
         try {
-            const response = await fetch('http://localhost:3001/api/jobs');
+            const response = await fetch(`${API_URL}/jobs`);
             const data = await response.json();
             setJobs(data);
           } catch (error) {

@@ -8,6 +8,12 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+// Logging middleware
+app.use((req, res, next) => {
+  console.log(`${req.method} ${req.originalUrl}`); // Logs the type of HTTP method and the request URL
+  next();
+});
+
 const secretsClient = new SecretsManagerClient({ region: 'eu-north-1' });
 
 app.get('/', (req, res) => {
@@ -73,16 +79,26 @@ app.post('/api/jobs', async (req, res) => {
     }
 });
 
-app.get('/test-db', async (req, res) => {
-    try {
-        const jobs = await JobPosting.find().limit(1);
-        console.log('Successfully fetched data from MongoDB:', jobs);
-        res.json(jobs);
-    } catch (error) {
-        console.error('Error fetching data from MongoDB:', error);
-        res.status(500).json({ message: 'Failed to fetch data from MongoDB' });
-    }
+app.get('/api/jobs', async (req, res) => {
+  try {
+    const jobPostings = await JobPosting.find().sort({ datePosted: -1 }); // Sort by datePosted in descending order
+    res.json(jobPostings);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
 });
+
+
+// app.get('/test-db', async (req, res) => {
+//     try {
+//         const jobs = await JobPosting.find().limit(1);
+//         console.log('Successfully fetched data from MongoDB:', jobs);
+//         res.json(jobs);
+//     } catch (error) {
+//         console.error('Error fetching data from MongoDB:', error);
+//         res.status(500).json({ message: 'Failed to fetch data from MongoDB' });
+//     }
+// });
 
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {

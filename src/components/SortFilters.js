@@ -15,7 +15,7 @@ const SortFilters = ({ filters, setFilters }) => {
   };
 
   return (
-    <div className>
+    <div>
       <div className="flex flex-wrap gap-3 max-w-4xl mb-6 mt-0 mx-auto sm:px-6 lg:px-8 font-semibold"> 
         <select 
           id="remoteType" 
