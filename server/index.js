@@ -9,10 +9,10 @@ app.use(cors());
 app.use(express.json());
 
 // Logging middleware
-app.use((req, res, next) => {
-  console.log(`${req.method} ${req.originalUrl}`); // Logs the type of HTTP method and the request URL
-  next();
-});
+// app.use((req, res, next) => {
+//   console.log(`${req.method} ${req.originalUrl}`); // Logs the type of HTTP method and the request URL
+//   next();
+// });
 
 const secretsClient = new SecretsManagerClient({ region: 'eu-north-1' });
 
