@@ -1,7 +1,8 @@
 // src/components/TagsFilters.js
 import React from 'react';
 
-const tags = ["Copywriting", "Agile", "SEO", "Risk Assessment", "React", "Scrum", "Team Leadership", "Budget Management", "Content Marketing", "Blogging"];
+const tags = ["Startup", "Developer", "Tech", "Marketing", "Sales", "Frontend", "UI/UX Design", "SaaS", "Next.js", "Team Building", "Creative", "Content"];
+
 
 const TagsFilters = ({ selectedTags, setSelectedTags }) => {
 
