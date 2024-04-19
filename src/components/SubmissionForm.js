@@ -35,11 +35,11 @@ const SubmissionForm = () => {
       newErrors.role = "Role cannot be empty";
     }
     // Remote Type and Job Type should not be default values
-    if (!formData.remoteType || formData.remoteType === "Remote Type") {
+    if (formData.remoteType === '') { // Check if the remoteType is empty
       formIsValid = false;
       newErrors.remoteType = "Please select a valid remote type";
     }
-    if (!formData.jobType || formData.jobType === "Job Type") {
+    if (formData.jobType === '') { // Check if the jobType is empty
       formIsValid = false;
       newErrors.jobType = "Please select a valid job type";
     }
@@ -62,14 +62,27 @@ const SubmissionForm = () => {
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: type === 'checkbox' ? checked : value
-    }));
+
+    // Check if the changed field is part of the salaryRange object
+    if (name === 'salaryRangeMin' || name === 'salaryRangeMax') {
+        const salaryField = name === 'salaryRangeMin' ? 'min' : 'max';
+        setFormData(prev => ({
+            ...prev,
+            salaryRange: {
+                ...prev.salaryRange,
+                [salaryField]: value  // Updating the specific field within salaryRange
+            }
+        }));
+    } else {
+        setFormData(prev => ({
+            ...prev,
+            [name]: type === 'checkbox' ? checked : value
+        }));
+    }
+
     // Clear errors for a particular field when it's edited
     setErrors(prev => ({ ...prev, [name]: undefined }));
   };
-
   
 
   const handleDescriptionChange = (value) => {
@@ -100,10 +113,6 @@ const SubmissionForm = () => {
     }
   };
 
-  
-  
-  // For now, we're just logging the formData to the console
-  // Here you would typically send the formData to the backend
 
   return (
     <form onSubmit={handleSubmit} className="mx-auto max-w-4xl p-6 bg-white shadow-lg rounded-lg">
@@ -129,8 +138,9 @@ const SubmissionForm = () => {
         <div className="form-field">
           <label htmlFor="remoteType" className="form-label text-gray-800">Remote Type</label>
           <select id="remoteType" name="remoteType" className="form-select focus:border-accent-500" onChange={handleChange} value={formData.remoteType}>
-            <option value="Fully">Fully Remote</option>
-            <option value="Partly">Partly Remote</option>
+            <option value="">Select Remote Type</option>
+            <option value="Fully Remote">Fully Remote</option>
+            <option value="Partly Remote">Partly Remote</option>
           </select>
           {errors.remoteType && <div className="text-accent-500 italic">{errors.remoteType}</div>}
         </div>
@@ -138,6 +148,7 @@ const SubmissionForm = () => {
         <div className="form-field">
           <label htmlFor="jobType" className="form-label text-gray-800">Job Type</label>
           <select id="jobType" name="jobType" className="form-select focus:border-accent-500" onChange={handleChange} value={formData.jobType}>
+            <option value="">Select Job Type</option>
             <option value="Full-time">Full-time</option>
             <option value="Part-time">Part-time</option>
             <option value="Contract">Contract</option>
@@ -147,24 +158,24 @@ const SubmissionForm = () => {
 
         {/* Salary Range Side by Side */}
         <div className="form-field">
-          <label htmlFor="salaryRangeMin" className="form-label text-gray-800">Salary Range Min ($)</label>
+          <label htmlFor="salaryRangeMin" className="form-label text-gray-800">Monthly Salary Min ($)</label>
           <input
             type="number"
             id="salaryRangeMin"
             name="salaryRangeMin"
-            className="form-input focus:border-accent-500" 
+            className="form-input focus:border-accent-500 input-no-spinner" 
             onChange={handleChange}
             value={formData.salaryRange.min} 
           />
         </div>
         
         <div className="form-field">
-          <label htmlFor="salaryRangeMax" className="form-label text-gray-800">Salary Range Max ($)</label>
+          <label htmlFor="salaryRangeMax" className="form-label text-gray-800">Monthly Salary Max ($)</label>
           <input
             type="number"
             id="salaryRangeMax"
             name="salaryRangeMax"
-            className="form-input focus:border-accent-500" 
+            className="form-input focus:border-accent-500 input-no-spinner" 
             onChange={handleChange}
             value={formData.salaryRange.max}
           />

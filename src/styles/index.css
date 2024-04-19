@@ -50,7 +50,7 @@ code {
   margin-bottom: 1rem;
 }
 
-/* yooooooooooo */
+
 
 /* Base form field style */
 
@@ -78,6 +78,20 @@ code {
   font-weight: 600;
   
 }
+
+
+.input-no-spinner {
+  appearance: none; /* Standard property */
+  -moz-appearance: textfield; /* Firefox */
+  -webkit-appearance: none; /* Chrome, Safari, newer Edge versions */
+}
+
+.input-no-spinner::-webkit-inner-spin-button,
+.input-no-spinner::-webkit-outer-spin-button {
+  appearance: none;
+  margin: 0; /* Remove spinner in WebKit browsers */
+}
+
 
 /* Specific styles for checkbox */
 [type="checkbox"] {
