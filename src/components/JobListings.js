@@ -1,7 +1,7 @@
 // src/components/JobListings.js
 
 import React, { useState, useEffect } from 'react';
-import { formatDistanceToNow } from 'date-fns';
+import { formatDistanceStrict } from 'date-fns';
 import SearchBar from './SearchBar';
 import SortFilters from './SortFilters';
 import TagsFilters from './TagsFilters';
@@ -68,7 +68,9 @@ const JobListings = ({ onJobSelect }) => {
               <p className="text-gray-600">{job.company}</p>
               <p className="text-gray-500">{displaySalaryRange(job.salaryRange.min, job.salaryRange.max)}</p>
             </div>
-            <p className="text-sm text-accent-500 font-light italic">{formatDistanceToNow(new Date(job.datePosted)) + ' ago'}</p>
+            <p className="text-sm text-accent-500 font-light italic">
+              {formatDistanceStrict(new Date(job.datePosted), new Date(), { addSuffix: true })}
+            </p>
           </div>
         ))}
       </div>
