@@ -1,70 +1,25 @@
-# Getting Started with Create React App
+Blog: Journey of Building WeRemote.ge - A Remote Job Board
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Entry 1: The Genesis
+It all started with an idea to simplify the search for remote jobs and create a seamless platform for employers to find the perfect candidates. The concept was clear: develop a website where users could easily browse remote job listings and apply directly. Employers would have the ability to post jobs, making the platform a central hub for remote work opportunities.
 
-## Available Scripts
+Entry 2: Laying the Groundwork
+The initial steps involved choosing the right tech stack. We decided on React for the frontend to create a responsive and dynamic user experience. For the backend, Node.js was an obvious choice for its efficiency and compatibility with our database choice, MongoDB. Setting up the local development environment was crucial, as it allowed for smooth progression through development phases.
 
-In the project directory, you can run:
+Entry 3: Backend Development
+Developing the backend involved setting up MongoDB with proper schemas for job postings. This was essential for storing and retrieving job data efficiently. We also tackled API development, creating endpoints that would later connect seamlessly with our frontend.
 
-### `npm start`
+Entry 4: Frontend Flair
+The frontend work was all about user interaction. React components were meticulously crafted to ensure users could interact with job listings and filters intuitively. We also emphasized the design, aiming for a clean and accessible user interface that would appeal to a wide audience.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Entry 5: Feature Integration
+One of the most satisfying parts of the project was implementing search functionality. It allowed users to filter jobs based on various criteria such as role, company, and tags. We also introduced form validation to ensure data integrity before submissions reached the backend.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Entry 6: Deployment Dilemmas
+Deployment brought its own set of challenges. Configuring AWS S3 for hosting was straightforward, but the DNS settings for our domain, WeRemote.ge, proved tricky. There were moments of frustration when the site wasn’t reachable due to DNS misconfigurations, but resolving these issues was a learning curve. As well, learning to connect the front end to the back end (using Elastic Beanstalk,  subnets, VPCs, NAT Gateways) was  definitely a memorable experience.
 
-### `npm test`
+Entry 7: Going Live
+The excitement of going live was palpable. After ensuring all configurations were correct and that the build folder was properly set up, we finally launched. It was rewarding to see our project accessible on the web at www.weremote.ge.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Entry 8: Reflections and Future Plans
+Looking back at the journey, from brainstorming sessions to debugging and deployment, each phase taught us something new. The platform isn’t just a product; it’s a testament to our dedication and hard work. As we plan for future enhancements, including payment integrations and more advanced filtering options, our initial journey continues to inspire and guide us.
