@@ -17,16 +17,25 @@ module.exports = {
         satisfy: ['Satisfy', 'cursive'],
         kaushan: ['Kaushan', 'cursive'],
         cookie: ['Cookie', 'cursive'],
+        roboto: ['Roboto', 'sans-serif'],
+        jost: ['Jost', 'sans-serif'],
+        poppins: ['Poppins', 'sans-serif'],
+      },
+
+      fontStyle: {
+        italic: 'italic',
+      },
+
+      fontWeight: {
+        'semi-bold': '600',
+        'extra-bold': '800',
+        'black': '900',
       },
 
       colors: {
-
         base: '#fefefe', // Base website off-white background
-
         contrast: '#2e2e2e',
-
         lightburg: '#7d4351',
-
         accent: {
             500: '#870001',  
         },
